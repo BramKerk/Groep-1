@@ -4,8 +4,8 @@
 ##      zo niet is het een eiwit.
 ##print welke sequentie langer/korter is
 ##print hoeveelheid D E R K in de eiwitsequentie.
-var1= open ('Documents/eno1 Mus musculus eiwit.txt', 'r')
-var2= open ('Documents/Zea mays Eno1 protein.txt', 'r')
+var1= open ('Documents/Zea mays Eno1 DNA.fasta', 'r')
+var2= open ('Documents/Saccharomyces cerevisiae Eno1 DNA.fasta', 'r')
 totaal1=0
 totaal2=0
 atcg1=0
@@ -14,6 +14,10 @@ d=0
 e=0
 r=0
 k=0
+a=0
+c=0
+t=0
+g=0
 lading1=0
 lading2=0
 for x in var1 :
@@ -50,6 +54,10 @@ for x in var1 :
             e+=E
             r+=R
             k+=K
+            a+=A
+            c+=C
+            t+=T
+            g+=G
             lading1=(r+k)-(d+e)
 ##print ('total:',totaal1)
 ##print ('atcg:',atcg1)
@@ -57,6 +65,7 @@ for x in var1 :
 print('************************************************')
 if totaal1 == atcg1:
     print ('this is a dna sequence')
+    print ('A:',a,'C:',c,'T:',t,'G:',g)
 if totaal1 > atcg1:
     print ('this is a protein sequence')
     print ('amount of D:',d,'E:',e)
@@ -64,6 +73,14 @@ if totaal1 > atcg1:
     print ('de lading is:',lading1)
 print ('the total length of this sequentie is:',totaal1)
 print('************************************************') 
+d=0
+e=0
+r=0
+k=0
+a=0
+c=0
+t=0
+g=0
 for x in var2 :
     if not x.startswith ('>'):
             A = x.count ('A')
@@ -98,12 +115,17 @@ for x in var2 :
             e+=E
             r+=R
             k+=K
+            a+=A
+            c+=C
+            t+=T
+            g+=G
             lading2=(r+k)-(d+e)
 ##print ("total:",totaal2)
 ##print ('atcg:',atcg2)
 ##print ('cg:',cg2)                               
 if totaal2 == atcg2:
     print ('this is a dna sequence')
+    print ('A:',a,'C:',c,'T:',t,'G:',g)
 if totaal2 > atcg2:
     print ('this is a protein sequence')
     print ('amount of D:',d,'E:',e)
